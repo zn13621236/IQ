@@ -114,7 +114,7 @@ public class MakeMine0 {
         return result;
     }
 
-    // another solution  O(2n) solution
+    // another solution O(2n) solution
     public String longestPalindrome2 (String s) {
         StringBuilder sb = new StringBuilder (s);
         sb.reverse ();
@@ -161,7 +161,12 @@ public class MakeMine0 {
      * Reverse digits of an integer. Example1: x = 123, return 321 Example2: x = -123, return -321
      */
     public int reverse (int x) {
-        return -1;
+        int result = 0;
+        while (x != 0) {
+            result = 10 * result + x % 10;
+            x = x / 10;
+        }
+        return result;
     }
 
     /*
@@ -170,14 +175,33 @@ public class MakeMine0 {
      * specs). You are responsible to gather all the input requirements up front.
      */
     public int myAtoi (String str) {
-        return -1;
+        str = str.trim ();
+        int result = 0;
+        for (int i = str.length () - 1; i >= 0; i--) {
+            char c = str.charAt (i);
+            if (c >= '0' && c <= '9') {
+                result = result * 10 + c - '0';
+            }
+            if (i == 0) {
+                if (c == '-') {
+                    result = 0 - result;
+                }
+            }
+        }
+        return result;
     }
 
     /*
      * Determine whether an integer is a palindrome. Do this without extra space.
      */
     public boolean isPalindrome (int x) {
-        return false;
+        int start = x;
+        int result = 0;
+        while (x != 0) {
+            result = result * 10 + x % 10;
+            x = x / 10;
+        }
+        return start - result == 0;
     }
 
     /*
@@ -187,6 +211,30 @@ public class MakeMine0 {
      * isMatch("aa", ".*") → true isMatch("ab", ".*") → true isMatch("aab", "c*a*b") → true
      */
     public boolean isMatch (String s, String p) {
-        return false;
+        if (s.length () <= 0) {
+            if (p.length () != 0 && !p.contains ("*")) {
+                return false;
+            }
+        }
+        int si = 0;
+        int pi = 0;
+        while (si < s.length ()) {
+            if (pi + 1 < p.length () && p.charAt (pi) == '*') {
+                pi += 2;
+                for (int i = si; i < s.length (); i++) {
+                    if (isMatch (s.substring (i), p.substring (pi))) {
+                        return true;
+                    }
+                }
+            } else {
+                if (s.charAt (si) == p.charAt (pi) || p.charAt (pi) == '.') {
+                    si++;
+                    pi++;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
