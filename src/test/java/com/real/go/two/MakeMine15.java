@@ -1,10 +1,10 @@
-package tree;
+package com.real.go.two;
 
 import java.util.List;
-import tree.MakeMine80.ListNode;
-import tree.MakeMine90.TreeNode;
+import com.real.go.one.MakeMine8.ListNode;
+import com.real.go.one.MakeMine9.TreeNode;
 
-public class MakeMine150 {
+public class MakeMine15 {
     
     /*
      * Given an input string, reverse the string word by word.

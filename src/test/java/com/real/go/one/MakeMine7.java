@@ -1,9 +1,9 @@
-package tree;
+package com.real.go.one;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MakeMine70 {
+public class MakeMine7 {
 
     /*
      * Given an absolute path for a file (Unix-style), simplify it. For example, path = "/home/", => "/home" path = "/a/./b/../../c/", => "/c"

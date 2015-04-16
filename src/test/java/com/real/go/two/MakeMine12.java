@@ -1,11 +1,11 @@
-package tree;
+package com.real.go.two;
 
 import java.util.ArrayList;
 import java.util.List;
-import tree.MakeMine80.ListNode;
-import tree.MakeMine90.TreeNode;
+import com.real.go.one.MakeMine8.ListNode;
+import com.real.go.one.MakeMine9.TreeNode;
 
-public class MakeMine120 {
+public class MakeMine12 {
     /*
      * Say you have an array for which the ith element is the price of a given stock on day i.
 

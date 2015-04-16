@@ -1,9 +1,9 @@
-package tree;
+package com.real.go.one;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MakeMine80 {
+public class MakeMine8 {
 
     /*
      * Follow up for "Search in Rotated Sorted Array": What if duplicates are allowed? Would this affect the run-time complexity? How and why? Write a

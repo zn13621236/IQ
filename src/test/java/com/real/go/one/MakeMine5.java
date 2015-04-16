@@ -1,4 +1,4 @@
-package tree;
+package com.real.go.one;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import org.junit.Test;
 
-public class MakeMine50 {
+public class MakeMine5 {
 
     /*
      * Given an integer n, return all distinct solutions to the n-queens puzzle. Each solution contains a distinct board configuration of the

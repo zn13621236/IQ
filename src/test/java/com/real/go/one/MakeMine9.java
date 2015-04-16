@@ -1,10 +1,10 @@
-package tree;
+package com.real.go.one;
 
 import java.util.ArrayList;
 import java.util.List;
-import tree.MakeMine80.ListNode;
+import com.real.go.one.MakeMine8.ListNode;
 
-public class MakeMine90 {
+public class MakeMine9 {
     
 /*
  * A message containing letters from A-Z is being encoded to numbers using the following mapping:

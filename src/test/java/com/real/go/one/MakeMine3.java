@@ -1,10 +1,10 @@
-package tree;
+package com.real.go.one;
 
 import java.util.List;
+import misc.Tree.ListNode;
 
-import tree.Tree.ListNode;
 
-public class MakeMine30 {
+public class MakeMine3 {
 	
 	/*
 	 * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.

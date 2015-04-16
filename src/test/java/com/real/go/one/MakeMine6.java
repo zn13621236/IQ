@@ -1,10 +1,10 @@
-package tree;
+package com.real.go.one;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-public class MakeMine60 {
+public class MakeMine6 {
 
     /*
      * Given a list, rotate the list to the right by k places, where k is non-negative. For example: Given 1->2->3->4->5->NULL and k = 2, return

@@ -1,10 +1,10 @@
-package tree;
+package com.real.go.two;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class MakeMine130 {
+public class MakeMine13 {
     
     /*
      * Given a string s, partition s such that every substring of the partition is a palindrome.
