@@ -14,15 +14,33 @@ If such arrangement is not possible, it must rearrange it as the lowest possible
 The replacement must be in-place, do not allocate extra memory.
 
 Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
-1,2,3 → 1,3,2
-3,2,1 → 1,2,3
-1,1,5 → 1,5,1
+1,2,3 ��� 1,3,2
+3,2,1 ��� 1,2,3
+1,1,5 ��� 1,5,1
 	 */
 	  public void nextPermutation(int[] num) {
-	        
+	        int start=num.length-1;
+	        while(start-1>=0&&num[start-1]<num[start]){
+	        	break;
+	        }
+		   reverse(num,start,num.length-1);
+		  //swap
+		   int tmp=num[start-1];
+		   num[start-1]=num[start];
+		   num[start]=tmp;
 	    }
 	  
-	  /*
+	  private void reverse(int[] num, int start, int end) {
+		   while(start<end){
+			   int tmp=num[start];
+			   num[start]=num[end];
+			   num[end]=tmp;
+			   start++;
+			   end--;
+		   }
+	}
+
+	/*
 	   * Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
 
 For "(()", the longest valid parentheses substring is "()", which has length = 2.
@@ -74,10 +92,10 @@ return [3, 4].
 You may assume no duplicates in the array.
 
 Here are few examples.
-[1,3,5,6], 5 → 2
-[1,3,5,6], 2 → 1
-[1,3,5,6], 7 → 4
-[1,3,5,6], 0 → 0
+[1,3,5,6], 5 ��� 2
+[1,3,5,6], 2 ��� 1
+[1,3,5,6], 7 ��� 4
+[1,3,5,6], 0 ��� 0
 	   */
 	  public int searchInsert(int[] A, int target) {
 	    return -1;
@@ -131,7 +149,7 @@ The same repeated number may be chosen from C unlimited number of times.
 
 Note:
 All numbers (including target) will be positive integers.
-Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).
+Elements in a combination (a1, a2, ��� , ak) must be in non-descending order. (ie, a1 ��� a2 ��� ��� ��� ak).
 The solution set must not contain duplicate combinations.
 For example, given candidate set 2,3,6,7 and target 7, 
 A solution set is: 
@@ -151,7 +169,7 @@ Each number in C may only be used once in the combination.
 
 Note:
 All numbers (including target) will be positive integers.
-Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).
+Elements in a combination (a1, a2, ��� , ak) must be in non-descending order. (ie, a1 ��� a2 ��� ��� ��� ak).
 The solution set must not contain duplicate combinations.
 For example, given candidate set 10,1,2,7,6,1,5 and target 8, 
 A solution set is: 
