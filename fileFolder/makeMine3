@@ -5,5 +5,5 @@ longestPalindrome
 
 
 MakeMine1.maxArea
-7
-setZeroes
+7.setZeroes
+2.findSubstring
