@@ -1,5 +1,6 @@
 package com.real.go.one;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -128,7 +129,32 @@ public class MakeMine3 {
 	 */
 
 	public int[] searchRange(int[] A, int target) {
-		return null;
+		int start = 0;
+		int end = A.length - 1;
+		int re = 0;
+		while (start <= end) {
+			int mid = start + (end - start) / 2;
+			if (A[mid] > target) {
+				end = mid - 1;
+			} else if (A[mid] < target) {
+				start = mid + 1;
+			} else {
+				re = mid;
+			}
+		}
+		int l = re;
+		int r = re;
+		while (l - 1 >= 0 && A[l] == A[l - 1]) {
+			l = l - 1;
+		}
+		while (r < A.length && A[r] == A[r + 1]) {
+			r += 1;
+		}
+		int[] result = new int[r - l + 1];
+		for (int i = 0; i < result.length; i++) {
+			result[i] = l++;
+		}
+		return result;
 	}
 
 	/*
@@ -142,7 +168,23 @@ public class MakeMine3 {
 	 * ��� 4 [1,3,5,6], 0 ��� 0
 	 */
 	public int searchInsert(int[] A, int target) {
-		return -1;
+		int start = 0;
+		int end = A.length - 1;
+		while (start < end) {
+			int mid = start + (end - start) / 2;
+			if (A[mid] == target) {
+				return mid;
+			} else if (A[mid] > target) {
+				end = mid - 1;
+			} else {
+				start = mid + 1;
+			}
+		}
+		if (target > A[start]) {
+			return start + 1;
+		} else {
+			return start;
+		}
 	}
 
 	/*
@@ -150,6 +192,7 @@ public class MakeMine3 {
 	 */
 
 	public boolean isValidSudoku(char[][] board) {
+
 		return false;
 	}
 
@@ -177,7 +220,22 @@ public class MakeMine3 {
 	 */
 
 	public String countAndSay(int n) {
-		return null;
+		if (n == 1)
+			return "1";
+		String s = countAndSay(n - 1);
+		int i = 0;
+		StringBuilder sb = new StringBuilder();
+		while (i < s.length()) {
+			int count = 1;
+			while (i + 1 < s.length() && s.charAt(i) == s.charAt(i + 1)) {
+				count++;
+				i++;
+			}
+			sb.append(count).append(s.charAt(i));
+			i++;
+		}
+
+		return sb.toString();
 	}
 
 	/*
@@ -194,7 +252,23 @@ public class MakeMine3 {
 	 */
 
 	public List<List<Integer>> combinationSum(int[] candidates, int target) {
-		return null;
+		List<List<Integer>> result = new ArrayList<>();
+		combi(candidates, target, 0, new ArrayList<Integer>(), result);
+		return result;
+	}
+
+	public void combi(int[] candidates, int target, int index,
+			List<Integer> aList, List<List<Integer>> result) {
+		for (int i = index; i < candidates.length; i++) {
+			int newT = target - candidates[i];
+			aList.add(candidates[i]);
+			if (newT == 0) {
+				result.add(aList);
+			} else {
+				combi(candidates, newT, i + 1, aList, result);
+			}
+			aList.remove(candidates[i]);
+		}
 	}
 
 	/*
@@ -210,6 +284,9 @@ public class MakeMine3 {
 	 * 8, A solution set is: [1, 7] [1, 2, 5] [2, 6] [1, 1, 6]
 	 */
 	public List<List<Integer>> combinationSum2(int[] num, int target) {
+		
+		
+		
 		return null;
 	}
 
