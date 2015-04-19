@@ -1,6 +1,7 @@
 package com.real.go.one;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -252,6 +253,7 @@ public class MakeMine3 {
 	 */
 
 	public List<List<Integer>> combinationSum(int[] candidates, int target) {
+		Arrays.sort(candidates);
 		List<List<Integer>> result = new ArrayList<>();
 		combi(candidates, target, 0, new ArrayList<Integer>(), result);
 		return result;
@@ -261,13 +263,17 @@ public class MakeMine3 {
 			List<Integer> aList, List<List<Integer>> result) {
 		for (int i = index; i < candidates.length; i++) {
 			int newT = target - candidates[i];
-			aList.add(candidates[i]);
-			if (newT == 0) {
-				result.add(aList);
+			if (newT >= 0) {
+				aList.add(candidates[i]);
+				if (newT == 0) {
+					result.add(aList);
+				} else {
+					combi(candidates, newT, i + 1, aList, result);
+				}
+				aList.remove(candidates[i]);
 			} else {
-				combi(candidates, newT, i + 1, aList, result);
+				break;
 			}
-			aList.remove(candidates[i]);
 		}
 	}
 
@@ -284,9 +290,7 @@ public class MakeMine3 {
 	 * 8, A solution set is: [1, 7] [1, 2, 5] [2, 6] [1, 1, 6]
 	 */
 	public List<List<Integer>> combinationSum2(int[] num, int target) {
-		
-		
-		
+
 		return null;
 	}
 
