@@ -75,5 +75,11 @@ Your algorithm should run in O(n) time and uses constant space.
 	        return -1;
 	    }
 	
-	
+	    /*
+	     * Given an array of strings, return all groups of strings that are anagrams. Note: All inputs will be in lower-case.
+	     */
+	    public List <String> anagrams (String[] strs) {
+	        for (String s: strs) {}
+	        return null;
+	    }
 }
