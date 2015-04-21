@@ -58,7 +58,25 @@ public class MakeMine7 {
     /*
      * Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
      */
-    public void setZeroes (int[][] matrix) {}
+    public void setZeroes (int[][] matrix) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        for (int i = 1; i < row; i++) {
+            for (int j = 1; j < col; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+        for (int i = 1; i < row; i++) {
+            for (int j = 1; j < col; j++) {
+                if (matrix[0][j] == 0 || matrix[i][0] == 0) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
 
     /*
      * Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties: Integers in each row are
