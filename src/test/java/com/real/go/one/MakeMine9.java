@@ -76,7 +76,7 @@ Note: Recursive solution is trivial, could you do it iteratively?
     
   public static class TreeNode {
       int val;
-      TreeNode left;
+      public TreeNode left;
       TreeNode right;
       TreeNode(int x) { val = x; }
   }
