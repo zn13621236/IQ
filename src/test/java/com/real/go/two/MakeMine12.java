@@ -1,7 +1,11 @@
 package com.real.go.two;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import misc.Tree.TreeNode;
@@ -108,31 +112,45 @@ public class MakeMine12 {
      * ["hot","dot","dog","lot","log"] Return [ ["hit","hot","dot","dog","cog"], ["hit","hot","lot","log","cog"] ] Note: All words have the same
      * length. All words contain only lowercase alphabetic characters.
      */
-//     public List<List<String>> findLadders(String start, String end, Set<String> dict) {
-//    
-//         Queue <String> aq= new LinkedList<>();
-//         Queue <String> aq2= new LinkedList<>();
-//         aq.add (start);
-//         while(!aq.isEmpty ()){
-//             String cur=aq.poll ();
-//             List<String> sList=transform(cur);
-//             for(String s:sList){
-//                 if(dict.contains (s)){
-//                     aq2.add (s); 
-//                 }
-//                 
-//             }
-//             if(aq.isEmpty ()){
-//               //  aq=
-//             }
-//             
-//         }
-//         
-//         
-//     }
+    public List <List <String>> findLadders (String start, String end, Set <String> dict) {
+        Queue <String> aq = new LinkedList <> ();
+        // Queue <String> aq2= new LinkedList<>();
+        List <List <String>> result = new ArrayList <> ();
+        Map <String, String> aMap = new HashMap <> ();
+        aq.add (start);
+        while (!aq.isEmpty ()) {
+            String cur = aq.poll ();
+            List <String> sList = transform (cur);
+            for (String s: sList) {
+                if (dict.contains (s)) {
+                    if (s.equalsIgnoreCase (end)) {
+                        aMap.put (s, cur);
+                        List <String> aList = new ArrayList <> ();
+                        while (aMap.containsKey (s)) {
+                            aList.add (0, s);
+                            s = aMap.get (s);
+                            result.add (aList);
+                        }
+                    }
+                    aq.add (s);
+                    dict.remove (s);
+                }
+            }
+        }
+        return result;
+    }
+
     private List <String> transform (String start) {
-        // TODO Auto-generated method stub
-        return null;
+        List <String> re = new ArrayList <> ();
+        for (int i = 0; i < start.length (); i++) {
+            for (int j = 0; j < 26; i++) {
+                if (start.charAt (i) != 'a' + j) {
+                    String s = start.substring (0, i) + 'a' + j + start.substring (i + 1);
+                    re.add (s);
+                }
+            }
+        }
+        return re;
     }
 
     /*
@@ -141,28 +159,151 @@ public class MakeMine12 {
      * ["hot","dot","dog","lot","log"] As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog", return its length 5. Note: Return
      * 0 if there is no such transformation sequence. All words have the same length. All words contain only lowercase alphabetic characters.
      */
-    // public int ladderLength(String start, String end, Set<String> dict) {
-    //
-    // }
+    public int ladderLength (String start, String end, Set <String> dict) {
+        int result = 0;
+        Queue <String> aq = new LinkedList <> ();
+        Map <String, String> aMap = new HashMap <> ();
+        aq.add (start);
+        while (!aq.isEmpty ()) {
+            String cur = aq.poll ();
+            List <String> sList = transform (cur);
+            for (String s: sList) {
+                if (dict.contains (s)) {
+                    aMap.put (s, cur);
+                    if (end.equals (s)) {
+                        while (aMap.containsKey (s)) {
+                            result++;
+                            s = aMap.get (s);
+                        }
+                    }
+                    aq.add (s);
+                    dict.remove (s);
+                }
+            }
+        }
+        return result;
+    }
+
     /*
      * Given an unsorted array of integers, find the length of the longest consecutive elements sequence. For example, Given [100, 4, 200, 1, 3, 2],
      * The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4. Your algorithm should run in O(n) complexity.
      */
-    // public int longestConsecutive(int[] num) {
-    //
-    // }
+    public int longestConsecutive (int[] num) {
+        Set <Integer> aSet = new HashSet <> ();
+        for (int i: num) {
+            aSet.add (i);
+        }
+        int result = 0;
+        for (int i = 0; i < num.length; i++) {
+            int val = num[i];
+            int count = 0;
+            int mark = val;
+            while (aSet.contains (val)) {
+                aSet.remove (val);
+                val--;
+                count++;
+            }
+            while (aSet.contains (mark)) {
+                aSet.remove (val);
+                mark++;
+                count++;
+            }
+            result = Math.max (result, count + 1);
+        }
+        return result;
+    }
+
     /*
      * Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number. An example is the root-to-leaf path
      * 1->2->3 which represents the number 123. Find the total sum of all root-to-leaf numbers. For example, 1 / \ 2 3 The root-to-leaf path 1->2
      * represents the number 12. The root-to-leaf path 1->3 represents the number 13. Return the sum = 12 + 13 = 25.
      */
-    // public int sumNumbers(TreeNode root) {
-    //
-    // }
+    public int sumNumbers (TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = sumNumbers (root.left);
+        int right = sumNumbers (root.right);
+        int ml = left;
+        int mr = right;
+        int v1 = root.val;
+        int v2 = root.val;
+        while (left > 0) {
+            left /= 10;
+            v1 *= 10;
+        }
+        while (right > 0) {
+            right /= 10;
+            v2 *= 10;
+        }
+        return v1 + v2 + ml + mr;
+    }
+
     /*
      * Given a 2D board containing 'X' and 'O', capture all regions surrounded by 'X'. A region is captured by flipping all 'O's into 'X's in that
      * surrounded region. For example, X X X X X O O X X X O X X O X X After running your function, the board should be: X X X X X X X X X X X X X O X
      * X
      */
-    public void solve (char[][] board) {}
+    public void solve (char[][] board) {
+        int row = board.length;
+        int col = board[0].length;
+        for (int i = 0; i < row; i++) {
+            if (board[i][0] == '0')
+                markBoard (board, i, 0);
+        }
+        for (int i = 0; i < col; i++) {
+            if (board[0][i] == '0')
+                markBoard (board, 0, i);
+        }
+        for (int i = 0; i < col; i++) {
+            if (board[row - 1][i] == '0')
+                markBoard (board, row - 1, i);
+        }
+        for (int i = 0; i < row; i++) {
+            if (board[i][col - 1] == '0')
+                markBoard (board, i, col - 1);
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (board[i][j] == 'Y') {
+                    board[i][j] = '0';
+                } else {
+                    board[i][j] = 'X';
+                }
+            }
+        }
+    }
+
+    private void markBoard (char[][] board, int i, int j) {
+        boolean[][] isVisit = new boolean[board.length][board[0].length];
+        Queue <Cor> q = new LinkedList <> ();
+        q.add (new Cor (i, j));
+        while (!q.isEmpty ()) {
+            Cor c = q.poll ();
+            board[c.x][c.y] = 'Y';
+            isVisit[c.x][c.y] = true;
+            if (c.x - 1 >= 0 && board[c.x - 1][c.y] == '0' && isVisit[c.x - 1][c.y]) {
+                q.add (new Cor(c.x-1,c.y));
+            }
+            if (c.x + 1<board.length && board[c.x + 1][c.y] == '0' && isVisit[c.x + 1][c.y]) {
+                q.add (new Cor(c.x+1,c.y));
+            }
+            if (c.y + 1 >= 0 && board[c.x][c.y+1] == '0' && isVisit[c.x][c.y+1]) {
+                q.add (new Cor(c.x,c.y+1));
+            }
+            if (c.y - 1 >= 0 && board[c.x][c.y-1] == '0' && isVisit[c.x][c.y-1]) {
+                q.add (new Cor(c.x,c.y-1));
+            }
+        }
+    }
+
+    public class Cor {
+
+        int x;
+        int y;
+
+        Cor (int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
 }
