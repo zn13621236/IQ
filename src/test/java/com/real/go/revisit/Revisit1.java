@@ -99,4 +99,27 @@ Your algorithm should run in O(n) time and uses constant space.
 	    // public int longestConsecutive(int[] num) {
 	    //
 	    // }
+	    
+	    /*
+	     * Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome
+	     * partitioning of s. For example, given s = "aab", Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
+	     */
+//	     public int minCut(String s) {
+//	         
+//	     } 
+	    
+	    
+	    /*
+	     * There are N gas stations along a circular route, where the amount of gas at station i is gas[i]. You have a car with an unlimited gas tank and
+	     * it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas
+	     * stations. Return the starting gas station's index if you can travel around the circuit once, otherwise return -1. Note: The solution is
+	     * guaranteed to be unique.
+	     */
+	    // public int canCompleteCircuit(int[] gas, int[] cost) {
+	    //
+	    //
+	    //
+	    //
+	    // }
+	    
 }
