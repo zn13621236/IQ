@@ -193,13 +193,11 @@ public class MakeMine5 {
 	 * sequence consists of non-space characters only. For example, Given s =
 	 * "Hello World", return 5.
 	 */
-	// public int lengthOfLastWord(String s) {
-	//
-	//
-	//
-	//
-	//
-	// }
+	public int lengthOfLastWord(String s) {
+		String[] result = s.split(" ");
+		return result[result.length - 1].length();
+	}
+
 	/*
 	 * Given an integer n, generate a square matrix filled with elements from 1
 	 * to n2 in spiral order. For example, Given n = 3, You should return the

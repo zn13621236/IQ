@@ -121,5 +121,100 @@ Your algorithm should run in O(n) time and uses constant space.
 	    //
 	    //
 	    // }
+	    /*
+	     * Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). For example, S =
+	     * "ADOBECODEBANC" T = "ABC" Minimum window is "BANC". Note: If there is no such window in S that covers all characters in T, return the emtpy
+	     * string "". If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
+	     */
+	    // public String minWindow(String S, String T) {
+	    //
+	    // }
+	    /*
+	     * Given two integers n and k, return all possible combinations of k numbers out of 1 ... n. For example, If n = 4 and k = 2, a solution is: [
+	     * [2,4], [3,4], [2,3], [1,2], [1,3], [1,4], ]
+	     */
+//	    public List <List <Integer>> combine (int n, int k) {
+//	      
+//	        return result;
+//	    }
+	    /*
+	     * Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the
+	     * order red, white and blue. Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively. Note: You are
+	     * not suppose to use the library's sort function for this problem.
+	     */
+	    public void sortColors (int[] A) {
+	        int i1 = 0, i2 = 0, i3 = 0;
+	        for (int i = 0; i < A.length; i++) {
+	            if (A[i] == 1) {
+	                A[i3] = 3;
+	                A[i2] = 2;
+	                A[i1] = 1;
+	                i1++;
+	                i2++;
+	                i3++;
+	            } else if (A[i] == 2) {
+	                A[i3] = 3;
+	                A[i2] = 2;
+	                i2++;
+	                i3++;
+	            } else {
+	                A[i3] = 3;
+	                i3++;
+	            }
+	        }
+	    }
+	    
+	    /*
+	     * Given a collection of integers that might contain duplicates, S, return all possible subsets.
+
+	   Note:
+	   Elements in a subset must be in non-descending order.
+	   The solution set must not contain duplicate subsets.
+	   For example,
+	   If S = [1,2,2], a solution is:
+
+	   [
+	     [2],
+	     [1],
+	     [1,2,2],
+	     [2,2],
+	     [1,2],
+	     []
+	   ]
+	     */
+	   // public List<List<Integer>> subsetsWithDup(int[] num) {
+//	        
+	   // }
+	    
+	    
+	    /*
+	     * Given n, generate all structurally unique BST's (binary search trees) that store values 1...n.
+
+	  For example,
+	  Given n = 3, your program should return all 5 unique BST's shown below.
+
+	     1         3     3      2      1
+	      \       /     /      / \      \
+	       3     2     1      1   3      2
+	      /     /       \                 \
+	     2     1         2                 3
+	     */
+	    
+	  //  public List<TreeNode> generateTrees(int n) {
+//	        
+	  //  }
+	    
+	    /*
+	     * Two elements of a binary search tree (BST) are swapped by mistake.
+
+	  Recover the tree without changing its structure.
+
+	  Note:
+	  A solution using O(n) space is pretty straight forward. Could you devise a constant space solution?
+	     */
+	    
+	    public void recoverTree(TreeNode root) {
+	        
+	    }
 	    
 }

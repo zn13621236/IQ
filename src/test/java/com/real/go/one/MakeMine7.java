@@ -165,12 +165,14 @@ public class MakeMine7 {
     }
 
     public void combine (int n, int k, int index, List <Integer> res, List <List <Integer>> result) {
-        if (res.size () == k) {
+        if(index>n) return;
+    	if (res.size () == k) {
             result.add (res);
+            return;
         }
         for (int i = index; i <= n; i++) {
             res.add (i);
-            combine (n, k, index + 1, res, result);
+            combine (n, k, i + 1, res, result);
             res.remove (i);
         }
     }
