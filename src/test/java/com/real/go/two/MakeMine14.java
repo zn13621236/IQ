@@ -155,8 +155,10 @@ public class MakeMine14 {
         public int get (int key) {
             if (aMap.containsKey (key)) {
                 Node n = aMap.get (key);
+                Node pre=n.pre;
+                pre.next=n.next;
+                n.next.pre=pre;
                 tail.next = n;
-                n.pre.next = null;
                 n.pre = tail;
                 n.next = null;
                 return n.val;
@@ -171,10 +173,10 @@ public class MakeMine14 {
                 aMap.put (key, n);
             } else {
                 if (aMap.size () == capacity) {// remove head
-                    aMap.remove (head.val);
+                    aMap.remove (head.key);
                     head = head.next;
                 } else {
-                    Node n = new Node (value);
+                    Node n = new Node (key,value);
                     aMap.put (key, n);
                     if (aMap.size () == 0) {
                         head = n;
@@ -194,8 +196,10 @@ public class MakeMine14 {
         public Node pre;
         public Node next;
         private int val;
+        private int key;
 
-        Node (int val) {
+        Node (int key, int val) {
+            this.key = this.val;
             this.val = val;
         }
     }

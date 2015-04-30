@@ -85,12 +85,39 @@ public class MakeMine0 {
      * should be O(log (m+n)).
      */
     public double findMedianSortedArrays (int A[], int B[]) {
-        return 0.0;
+        int m = A.length;
+        int n = B.length;
+        int k = m + n / 2;
+        if ((m + n) % 2 == 0) {
+            return (findMedianSortedArrays (A, 0, m - 1, B, 0, n - 1, k) + findMedianSortedArrays (A, 0, m - 1, B, 0, n - 1, k + 1)) / 2;
+        } else {
+            return findMedianSortedArrays (A, 0, m - 1, B, 0, n - 1, k);
+        }
     }
 
-    // public double findMedian (int[] A, int as, int ae, int B[], int bs, int be) {
-    //
-    // }
+    public double findMedianSortedArrays (int A[], int as, int ae, int B[], int bs, int be, int k) {
+        int m = ae - as + 1;
+        int n = be - bs + 1;
+        if (m > n) {
+            return findMedianSortedArrays (B, bs, be, A, as, ae, k);
+        }
+        if (m == 0) {
+            return B[k - 1];
+        }
+        if (k == 1)
+            return Math.min (A[as], B[bs]);
+        int index1 = Math.min (m, k / 2);
+        int index2 = k - index1;
+        if (A[index1 - 1] == B[index2 - 1]) {
+            return A[index1 - 1];
+        }
+        if (A[index1 - 1] > B[index2 - 1]) {
+            return findMedianSortedArrays (A, as, ae, B, index2, be, k - index2);
+        } else {
+            return findMedianSortedArrays (A, index1, ae, B, bs, be, k - index1);
+        }
+    }
+
     /*
      * Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique
      * longest palindromic substring.
